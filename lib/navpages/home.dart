@@ -5,8 +5,8 @@ import 'package:food_delivery_app/widgets/spacing.dart';
 import 'package:food_delivery_app/widgets/text.dart';
 
 class NavHome extends StatelessWidget {
-  const NavHome({Key? key}) : super(key: key);
-
+  NavHome({Key? key}) : super(key: key);
+  GlobalKey _home_key = GlobalKey();
   @override
   Widget build(BuildContext context) {
     Color primary = Theme.of(context).primaryColor;
@@ -184,6 +184,7 @@ class NavHome extends StatelessWidget {
               itemCount: elements.length,
               itemBuilder: (context, index) => elements[index])),
       duration: 300,
+      key: _home_key,
     );
   }
 }

@@ -21,7 +21,7 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     Color primary = Theme.of(context).primaryColor;
-    const pages = [
+    var pages = [
       {"name": "Home", "widget": NavHome()},
       {"name": "Menu", "widget": Menu()},
       {"name": "Cart", "widget": Cart()},
