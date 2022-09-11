@@ -8,9 +8,17 @@ import 'package:food_delivery_app/pages/signup.dart';
 import 'package:food_delivery_app/splash.dart';
 
 void main() {
+  var appcolor = Color.fromARGB(255, 47, 138, 103);
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
-    theme: ThemeData(primaryColor: Color.fromARGB(255, 47, 138, 103)),
+    theme: ThemeData(
+      primaryColor: Color.fromARGB(255, 47, 138, 103),
+      buttonTheme: ButtonThemeData(buttonColor: appcolor),
+      elevatedButtonTheme: ElevatedButtonThemeData(
+          style:
+              ButtonStyle(overlayColor: MaterialStateProperty.all(appcolor))),
+    ),
+    color: appcolor,
     routes: {
       "/": (_) => SplashScreen(),
       "/features": (_) => FeaturesSlide(),

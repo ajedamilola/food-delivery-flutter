@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:food_delivery_app/pages/food.dart';
 import 'package:food_delivery_app/widgets/fadeIn.dart';
 import 'package:food_delivery_app/widgets/spacing.dart';
 import 'package:food_delivery_app/widgets/text.dart';
@@ -33,29 +34,39 @@ class _MenuState extends State<Menu> with TickerProviderStateMixin {
     Color primary = Theme.of(context).primaryColor;
 
     Widget FoodItem(String name, dynamic price, String image) {
-      return Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Container(
-            height: 200,
-            decoration: BoxDecoration(borderRadius: BorderRadius.circular(15)),
-            child: Image.asset(
-              image,
-              fit: BoxFit.cover,
+      return InkWell(
+        onTap: () {
+          Navigator.of(context)
+              .push(MaterialPageRoute(builder: ((context) => FoodPage())));
+        },
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Container(
+              height: 200,
+              decoration:
+                  BoxDecoration(borderRadius: BorderRadius.circular(15)),
+              child: Hero(
+                tag: "main_image",
+                child: Image.asset(
+                  image,
+                  fit: BoxFit.cover,
+                ),
+              ),
             ),
-          ),
-          Label(
-            name.toString(),
-            size: 18,
-            weight: FontWeight.w600,
-          ),
-          Label(
-            "\$$price",
-            size: 16,
-            weight: FontWeight.w600,
-            color: primary,
-          ),
-        ],
+            Label(
+              name.toString(),
+              size: 18,
+              weight: FontWeight.w600,
+            ),
+            Label(
+              "\$$price",
+              size: 16,
+              weight: FontWeight.w600,
+              color: primary,
+            ),
+          ],
+        ),
       );
     }
 
@@ -173,7 +184,7 @@ class _MenuState extends State<Menu> with TickerProviderStateMixin {
               ],
             ),
             SizedBox(
-              height: MediaQuery.of(context).size.height * 0.53,
+              height: MediaQuery.of(context).size.height - 300,
               child: TabBarView(
                 children: [
                   //tab page 1
